@@ -1,0 +1,58 @@
+﻿@page
+@model Web.Pages.Personas.EliminarModel
+@{
+}
+<header class="subhead">
+    <div class="container">
+        <div class="masthead-subheading">SC-701: Programación Web Avanzada</div>
+        <div class="masthead-heading text-uppercase">Ejercicio persona</div>
+    </div>
+</header>
+<section class="page-section bg-light" id="principal">
+    <div class="container">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Eliminar persona</h2>
+                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
+
+            <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto ">
+                <form method="post">
+                    <row>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.persona.Identificacion):
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.persona.Identificacion)
+                        </dd>
+                    </row>
+                    <row>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.persona.Nombre):
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.persona.Nombre)
+                        </dd>
+                    </row>
+                    <row>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.persona.Apellido):
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.persona.Apellido)
+                        </dd>
+                    </row>
+                    <div class="form-group">
+                        <a class="btn btn-primary" asp-page="./Index">Cancelar</a>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </div>
+
+                    <input type="hidden" asp-for="persona.Identificacion" />
+                    <input type="hidden" asp-for="persona.Nombre" />
+                    <input type="hidden" asp-for="persona.Apellido" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

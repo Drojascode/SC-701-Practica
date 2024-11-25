@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<PackageReference Include="Autorizacion.Abstracciones" Version="2.0.5" />
+		<PackageReference Include="Autorizacion.DA" Version="2.0.5" />
+		<PackageReference Include="Autorizacion.Flujo" Version="2.0.5" />
+		<PackageReference Include="Autorizacion.Middleware" Version="2.0.5" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.8" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Net.Http" Version="4.3.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Abstracciones\Abstracciones.csproj" />
+		<ProjectReference Include="..\DA.Dapper\DA.Dapper.csproj" />
+		<ProjectReference Include="..\Flujo\Flujo.csproj" />
+		<ProjectReference Include="..\Reglas\Reglas.csproj" />
+		<ProjectReference Include="..\Servicios\Servicios.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Data\Documentos\" />
+	</ItemGroup>
+
+</Project>

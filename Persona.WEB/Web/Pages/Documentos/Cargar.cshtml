@@ -1,0 +1,103 @@
+﻿@page
+@model WebRazor.Pages.Documentos.CargarModel
+@{
+}
+<header class="subhead">
+    <div class="container">
+        <div class="masthead-subheading">SC-701: Programación Web Avanzada</div>
+        <div class="masthead-heading text-uppercase">Ejercicio persona</div>
+    </div>
+</header>
+
+
+<section class="page-section bg-light" id="principal">
+    <div class="container">
+        <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto bg-white p-2 p-md-5 rounded shadow">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Enviar información</h2>
+                <h3 class="section-subheading text-muted">
+                    Lorem ipsum dolor sit amet consectetur.
+                </h3>
+            </div>
+            <div style="@(Model.envioEstado!= System.Net.HttpStatusCode.OK ? "display:block" : "display:none")">
+                <form method="post" enctype="multipart/form-data">
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+                        <input type="email"
+                               placeholder="Correo electrónico"
+                               asp-for="correo.Destinatario"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+                        <input type="text"
+                               placeholder="Asunto"
+                               asp-for="correo.Asunto"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+                        <input type="tel"
+                               placeholder="Mensaje"
+                               asp-for="correo.Cuerpo"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+
+                        <input type="file"
+                               placeholder="Documento"
+                               asp-for="archivo"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <div class="text-danger" asp-validation-summary="All"></div>
+                    <div class="d-grid gap-2">
+
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-primary" asp-page="./Index">Regresar</a>
+                        <button class="btn btn-success" type="submit">Enviar</button>
+                    </div>
+                </form>
+            </div>
+
+            @if (Model.envioEstado == System.Net.HttpStatusCode.BadRequest)
+            {
+                <div class="alert alert-warning" role="alert">
+                    Error al cargar el documento
+                </div>
+            }
+            @if (Model.envioEstado == System.Net.HttpStatusCode.OK)
+            {
+                <div class="alert alert-success" role="alert">
+                    Documento cargado y notificado correctamente
+                </div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary" asp-page="./Index">Regresar</button>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}
+

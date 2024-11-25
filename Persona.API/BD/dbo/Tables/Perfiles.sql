@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Perfiles]
+(
+	[IdPersona] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY,
+	[Foto] UNIQUEIDENTIFIER NOT NULL,
+	[Video] Varchar(Max) NOT NULL,
+	[Curriculum] UNIQUEIDENTIFIER NOT NULL
+)
