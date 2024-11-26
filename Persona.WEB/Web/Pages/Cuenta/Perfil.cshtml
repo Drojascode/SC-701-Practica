@@ -1,6 +1,9 @@
-﻿@page
+﻿﻿@page
+
 @model Web.Pages.Cuenta.PerfilModel
+
 @{
+
 }
 <header class="subhead">
     <div class="container">
@@ -19,34 +22,16 @@
                     Lorem ipsum dolor sit amet consectetur.
                 </h3>
             </div>
-            <div style="@(Model.envioEstado!= System.Net.HttpStatusCode.OK ? "display:block" : "display:none")">
+            <div style="@(Model.envioEstado!= System.Net.HttpStatusCode.OK ? "display:block" : "display:none display:block" : "display:none")">
                 <form method="post" enctype="multipart/form-data">
 
                     <div class="input-group mb-3">
                         <span class="input-group-text">
                             <i class="bi bi-envelope-at"></i>
                         </span>
-                        <input type="email"
-                               placeholder="Correo electrónico"
-                               asp-for="correo.Destinatario"
-                               class="form-control form-control-lg" />
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">
-                            <i class="bi bi-envelope-at"></i>
-                        </span>
                         <input type="text"
-                               placeholder="Asunto"
-                               asp-for="correo.Asunto"
-                               class="form-control form-control-lg" />
-                    </div>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">
-                            <i class="bi bi-envelope-at"></i>
-                        </span>
-                        <input type="tel"
-                               placeholder="Mensaje"
-                               asp-for="correo.Cuerpo"
+                               placeholder="Video"
+                               asp-for="perfil.Video"
                                class="form-control form-control-lg" />
                     </div>
                     <div class="input-group mb-3">
@@ -55,8 +40,18 @@
                         </span>
 
                         <input type="file"
-                               placeholder="Documento"
-                               asp-for="archivo"
+                               placeholder="Curriculum"
+                               asp-for="perfil.Curriculum"
+                               class="form-control form-control-lg" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-envelope-at"></i>
+                        </span>
+
+                        <input type="file"
+                               placeholder="Fotografía"
+                               asp-for="perfil.Foto"
                                class="form-control form-control-lg" />
                     </div>
                     <div class="text-danger" asp-validation-summary="All"></div>
@@ -70,34 +65,35 @@
                 </form>
             </div>
 
-            @if (Model.envioEstado == System.Net.HttpStatusCode.BadRequest)
+@if (Model.envioEstado == System.Net.HttpStatusCode.BadRequest)
             {
-                <div class="alert alert-warning" role="alert">
-                    Error al cargar el documento
+            <div class="alert alert-warning" role="alert">
+                Error al cargar el documento
                 </div>
-            }
-            @if (Model.envioEstado == System.Net.HttpStatusCode.OK)
+}
+@if (Model.envioEstado == System.Net.HttpStatusCode.OK)
             {
-                <div class="alert alert-success" role="alert">
-                    Documento cargado y notificado correctamente
-                </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" asp-page="./Index">Regresar</button>
-                </div>
-            }
+<div class="alert alert-success" role="alert">
+    Documento cargado y notificado correctamente
+</div>
+<div class="d-grid gap-2">
+    <button class="btn btn-primary" asp-page="./Index">Regresar</button>
+</div>
+}
 
 
-        </div>
-    </div>
+</div>
+</div>
 </section>
 
 
 
+
 @section Scripts
-{
-    @{
+    {
+     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
 
     }
-}
 
+}
